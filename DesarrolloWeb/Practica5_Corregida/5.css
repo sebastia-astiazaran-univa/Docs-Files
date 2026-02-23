@@ -1,0 +1,20 @@
+.btnNum{
+    background-color: grey;
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    width: 75px;
+    height: 75px;
+}
+#tablero{
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    width: 100%;
+    height: 75px;
+}
+
+body{
+    text-align: center;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cosas sobre mi</title>
+</head>
+<body style="background-color:rgb(185,54,54)">
+    <div class="fondoanimado"></div>
+    <!-- Música de fondo -->
+    <audio id="musicaFondo" src="Audios/Go! - NEFFEX.mp3" autoplay loop></audio>
+
+    <h1 class="texto1">Cosas Sobre mi</h1>
+
+    <!-- Hobbies -->
+    <div class="lista-centro">
+        <h2 class="texto2">Hobbies</h2>
+        <ul>
+            <li class="texto3">Ir al gimnasio</li>
+            <li class="texto3">Jugar Videojuegos</li>
+            <li class="texto3">Leer a veces</li>
+            <li class="texto3">Comer postres cuando no estoy de dieta</li>
+            <li class="texto3">Dormir</li>
+            <li class="texto3">Pasar tiempo con mi familia y mascota</li>
+            <li class="texto3">Ver series y animes</li>
+            <li class="texto3">Escuchar cualquier tipo de musica</li>
+        </ul>
+    </div>
+
+    <!-- Cosas que me gustan -->
+    <div class="lista-centro">
+        <h2 class="texto2">Cosas que me gustan</h2>
+        <ul>
+            <li class="texto4">Me gustan los postres</li>
+            <li class="texto4">Me gusta mucho las sagas de videojuegos de Monster hunter, Pokemon, Halo, Persona, Far cry y Assasins creed.</li>
+            <li class="texto4">Mis comidas Favoritas son milanesa de pollo con papas a la francesa y la lasaña</li>
+            <li class="texto4">Me gusta el futbol y el futbol americano. Mis equipos favoritos son Barcelona, Arsenal y Milan, de futbol americano Steelers desde la cuna</li>
+            <li class="texto4">Me gusta la tecnologia</li>
+        </ul>
+    </div>
+
+    <!-- Que no me gusta -->
+    <div class="lista-centro">
+        <h2 class="texto2">Que no me gusta</h2>
+        <ul>
+            <li class="texto5">Que me dejen plantado</li>
+            <li class="texto5">Ver el maltrato animal es algo que odio</li>
+            <li class="texto5">El quedarme solo</li>
+            <li class="texto5">El que se metan con mi familia</li>
+        </ul>
+    </div>
+
+    <!-- Botón con sonido -->
+    <div class="boton-centro">
+        <button id="miBoton" onclick="Sorpresita()">Sorpresita al que le pique</button>
+    </div>
+
+<script>
+function Sorpresita() {
+    // Abrir popup
+    window.open("Imagenes/angmerino-mono.gif", "popup", "width=400,height=400");
+
+    // Reproducir sonido
+    const sonidoClick = new Audio("Audios/Go!-NEFFEX.mp3");
+    sonidoClick.play();
+}
+</script>
+
+</body>
+</html>
+

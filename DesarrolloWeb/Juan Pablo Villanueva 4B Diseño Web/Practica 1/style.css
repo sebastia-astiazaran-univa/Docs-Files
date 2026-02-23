@@ -1,0 +1,71 @@
+/* Encabezado */
+.texto1 {
+   text-align: center;
+   color: brown; 
+   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   background-color: antiquewhite;
+}
+
+/* Subtítulos */
+.texto2 {
+    text-align: center;
+    color: antiquewhite;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Listas centradas */
+.texto3, .texto4, .texto5 {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Quitar viñetas y centrar listas */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* Botón */
+#miBoton {
+    background-color: #bdc274; 
+    color: rgb(0, 0, 0);             
+    padding: 10px 20px;        
+    border: 2px solid #000000; 
+    border-radius: 6px;        
+    font-size: 16px;           
+    cursor: pointer;           
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.boton-centro {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+#miBoton:hover {
+    background-color: #9b1616; 
+    color: #000000;            
+}
+
+#miBoton:active {
+    background-color: #cc4117; 
+}
+
+/* Fondo animado */
+.fondoanimado {
+    border-radius: 15cm;
+    position: fixed;
+    top: 0;
+    left: 0;   
+    width: 200%;
+    height: 100%;
+    background-image: url("Imagenes/descargar.gif");
+    background-repeat: repeat-x;
+    background-size: cover;
+    animation: moverfondo 50s linear infinite;
+    opacity: 0.7;
+    z-index: -1;
+}

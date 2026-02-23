@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>practica5</title>
+        <link rel="stylesheet" href="5.css">
+        <script src="5.js"></script>
+    </head>
+    <body style="align-items: center;">
+        <table style="align-items: center; text-align: end;" >
+            <tr><td colspan="4"><p id="tablero">0.0</p></td></tr>
+            <tr>
+                <td id="boton7" class="btnNum" onclick="numclic(7)">7</td>
+                <td id="boton8" class="btnNum" onclick="numclic(8)">8</td>
+                <td id="boton9" class="btnNum" onclick="numclic(9)">9</td>
+                <td id="division" class="btnNum" onclick="operatorclic('/')">/</td>
+                <td><button onclick="location.reload()" 
+                    style="width: 40px; height: 20px;">
+                        C</button>
+        </td> 
+            </tr>
+            <tr>
+                <td id="boton4" class="btnNum" onclick="numclic(4)">4</td>
+                <td id="boton5" class="btnNum" onclick="numclic(5)">5</td>
+                <td id="boton6" class="btnNum" onclick="numclic(6)">6</td>
+                <td id="multiplicaion" class="btnNum" onclick="operatorclic('*')">X</td>
+            </tr>
+            <tr>
+                <td id="boton1" class="btnNum" onclick="numclic(1)">1</td>
+                <td id="boton2" class="btnNum" onclick="numclic(2)">2</td>
+                <td id="boton3" class="btnNum" onclick="numclic(3)">3</td>
+                <td id="menos" class="btnNum" onclick="operatorclic('-')">-</td>
+            </tr>
+            <tr>
+                <td id="punto" class="btnNum">.</td>
+                <td id="boton0" class="btnNum" onclick="numclic(0)">0</td>
+                <td id="mas" class="btnNum" onclick="operatorclic('+')">+</td>
+                <td id="igual" class="btnNum">=</td>
+            </tr>
+            
+        </table>
+    </body>
+</html>
