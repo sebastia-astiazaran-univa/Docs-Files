@@ -1,0 +1,7 @@
+PascalCase
+snake_case
+camelCase
+
+SebastianAstiazaranLopez_ArchivoDeProyecto
+sebastian_astiazaran_lopez_archivo_de_proyecto
+sebastianAstiazaran_archivoProyecto

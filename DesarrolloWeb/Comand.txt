@@ -1,1 +1,1 @@
-npx @marp-team/marp-cli Class_3.md --pptx
+npx @marp-team/marp-cli Class_3.md --pdf
