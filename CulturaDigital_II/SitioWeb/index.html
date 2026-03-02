@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación de autos | Por marca, potencia e interior</title>
+    <!-- Fuentes e íconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7fb;
+            color: #1e293b;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Encabezado principal */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0f2b4b, #2a5c8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero i {
+            color: #f59e0b;
+        }
+
+        .badge {
+            background-color: #e2e8f0;
+            border-radius: 999px;
+            padding: 0.25rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #0f2b4b;
+        }
+
+        /* Sección de cada marca */
+        .brand-section {
+            margin-bottom: 3rem;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #cbd5e1;
+            padding-bottom: 0.75rem;
+        }
+
+        .brand-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .brand-header i {
+            font-size: 2rem;
+            color: #3b82f6;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        /* Grid de tarjetas */
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Tarjeta de cada auto */
+        .car-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e9eef3;
+        }
+
+        .car-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .car-model {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0b1f33;
+            margin-bottom: 0.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .car-brand-mini {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #3b82f6;
+            background: #eef2ff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 999px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .ratings {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1rem 0 1.2rem;
+        }
+
+        .rating-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .rating-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            color: #334155;
+        }
+
+        .rating-label i {
+            width: 1.4rem;
+            color: #64748b;
+        }
+
+        .rating-value {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .score-bar {
+            width: 70px;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            border-radius: 999px;
+        }
+
+        .power-fill { background: #dc2626; }    /* rojo para potencia */
+        .interior-fill { background: #16a34a; } /* verde para interior */
+
+        .overall-rank {
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 1rem;
+        }
+
+        .rank-badge {
+            background: #fbbf24;
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3);
+        }
+
+        .rank-label {
+            font-weight: 600;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.8rem;
+        }
+
+        /* Nota aclaratoria */
+        .footer-note {
+            margin-top: 4rem;
+            background: #dbeafe;
+            border-radius: 2rem;
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            color: #1e3a8a;
+        }
+
+        .footer-note i {
+            margin-right: 0.5rem;
+            color: #2563eb;
+        }
+
+        .legend {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .color-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 999px;
+        }
+
+        .dot-power { background: #dc2626; }
+        .dot-interior { background: #16a34a; }
+        .dot-overall { background: #fbbf24; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            body { padding: 1.5rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .brand-header h2 { font-size: 1.6rem; }
+            .cars-grid { grid-template-columns: 1fr; }
+            .footer-note { flex-direction: column; align-items: flex-start; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero / título -->
+        <div class="hero">
+            <h1><i class="fas fa-car" style="color: #3b82f6; margin-right: 10px;"></i>Ranking de autos</h1>
+            <p>
+                <span class="badge"><i class="fas fa-tag"></i> Por marca</span>
+                <span class="badge"><i class="fas fa-gauge-high"></i> Potencia 1-10</span>
+                <span class="badge"><i class="fas fa-couch"></i> Interior 1-10</span>
+                <span class="badge"><i class="fas fa-star"></i> Clasificación global 1-10</span>
+            </p>
+            <p style="margin-top: 1rem; color: #2c3e50;">
+                <i class="fas fa-arrow-down" style="color: #f59e0b;"></i> Ordenado por marcas, valoración de potencia e interior, y ranking del 1 al 10
+            </p>
+        </div>
+
+        <!-- Sección Toyota -->
+        <section class="brand-section">
+            <div class="brand-header">
+                <i class="fab fa-toyota"></i>
+                <h2>Toyota</h2>
+            </div>
+            <div class="cars-grid">
+                <!-- Corolla -->
+                <div class="car-card">
+                    <div class="car-model">Corolla</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> Sedán compacto</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                7/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 70%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                8/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 80%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">8</span>
+                    </div>
+                </div>
+                <!-- Camry -->
+                <div class="car-card">
+                    <div class="car-model">Camry</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> Sedán mediano</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                8/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 80%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                8/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 80%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">8</span>
+                    </div>
+                </div>
+                <!-- RAV4 -->
+                <div class="car-card">
+                    <div class="car-model">RAV4</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> SUV compacto</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                7/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 70%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                7/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 70%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">7</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección BMW -->
+        <section class="brand-section">
+            <div class="brand-header">
+                <i class="fab fa-bmw"></i>
+                <h2>BMW</h2>
+            </div>
+            <div class="cars-grid">
+                <!-- Serie 3 -->
+                <div class="car-card">
+                    <div class="car-model">Serie 3</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> Sedán deportivo</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                8/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 80%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                8/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 80%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">8</span>
+                    </div>
+                </div>
+                <!-- X5 -->
+                <div class="car-card">
+                    <div class="car-model">X5</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> SUV de lujo</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                9/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 90%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                9/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 90%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">9</span>
+                    </div>
+                </div>
+                <!-- i8 -->
+                <div class="car-card">
+                    <div class="car-model">i8</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> Deportivo híbrido</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                9/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 90%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                8/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 80%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">9</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Ford -->
+        <section class="brand-section">
+            <div class="brand-header">
+                <i class="fab fa-ford"></i>
+                <h2>Ford</h2>
+            </div>
+            <div class="cars-grid">
+                <!-- Mustang -->
+                <div class="car-card">
+                    <div class="car-model">Mustang</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> Muscle car</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                9/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 90%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                7/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 70%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">8</span>
+                    </div>
+                </div>
+                <!-- F-150 -->
+                <div class="car-card">
+                    <div class="car-model">F-150</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> Pickup</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                8/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 80%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                7/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 70%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">8</span>
+                    </div>
+                </div>
+                <!-- Explorer -->
+                <div class="car-card">
+                    <div class="car-model">Explorer</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> SUV mediano</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                7/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 70%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                8/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 80%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">8</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Tesla -->
+        <section class="brand-section">
+            <div class="brand-header">
+                <i class="fas fa-bolt" style="color: #3b82f6; background: #e0f2fe; padding: 0.5rem; border-radius: 50%;"></i>
+                <h2>Tesla</h2>
+            </div>
+            <div class="cars-grid">
+                <!-- Model S -->
+                <div class="car-card">
+                    <div class="car-model">Model S</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> Sedán eléctrico</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                9/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 90%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                8/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 80%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">9</span>
+                    </div>
+                </div>
+                <!-- Model 3 -->
+                <div class="car-card">
+                    <div class="car-model">Model 3</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> Sedán compacto</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                8/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 80%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                7/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 70%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">8</span>
+                    </div>
+                </div>
+                <!-- Model X -->
+                <div class="car-card">
+                    <div class="car-model">Model X</div>
+                    <span class="car-brand-mini"><i class="fas fa-tag"></i> SUV eléctrico</span>
+                    <div class="ratings">
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-horse-head"></i> Potencia</span>
+                            <span class="rating-value">
+                                9/10
+                                <span class="score-bar"><span class="score-fill power-fill" style="width: 90%"></span></span>
+                            </span>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label"><i class="fas fa-couch"></i> Interior</span>
+                            <span class="rating-value">
+                                8/10
+                                <span class="score-bar"><span class="score-fill interior-fill" style="width: 80%"></span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="overall-rank">
+                        <span class="rank-label"><i class="fas fa-medal"></i> Ranking</span>
+                        <span class="rank-badge">9</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pie de página con leyenda y explicación -->
+        <div class="footer-note">
+            <div>
+                <i class="fas fa-clipboard-list fa-xl"></i>
+                <span style="font-weight: 600;">Clasificación del 1 al 10:</span> los puntajes reflejan potencia bruta, calidad de materiales y confort interior.
+            </div>
+            <div class="legend">
+                <div class="legend-item"><span class="color-dot dot-power"></span> Potencia</div>
+                <div class="legend-item"><span class="color-dot dot-interior"></span> Interior</div>
+                <div class="legend-item"><span class="color-dot dot-overall"></span> Ranking global</div>
+            </div>
+            <div>
+                <i class="fas fa-arrow-up"></i> Ordenado por marcas
+            </div>
+        </div>
+    </div>
+</body>
+</html>
