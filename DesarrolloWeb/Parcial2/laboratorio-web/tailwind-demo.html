@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+  <main class="mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 py-10">
+    <section class="rounded-[32px] border border-white/10 bg-gradient-to-br from-violet-600/30 via-slate-900 to-cyan-500/10 p-8 shadow-2xl">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">Clase 17</p>
+      <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        <div>
+          <h1 class="text-4xl font-black tracking-tight sm:text-5xl">Tailwind utility-first</h1>
+          <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+            Aqui casi todo se construye con clases directas en el HTML: color, padding, layout, bordes y sombras.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-200">bg-slate-950</span>
+            <span class="rounded-full border border-violet-400/30 bg-violet-400/10 px-4 py-2 text-sm font-semibold text-violet-200">px-6 py-3</span>
+            <span class="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-200">rounded-3xl</span>
+          </div>
+        </div>
+
+        <article class="mx-auto w-full max-w-sm rounded-3xl border border-white/10 bg-slate-900/80 p-8 text-center shadow-[0_30px_80px_rgba(76,29,149,0.35)] backdrop-blur">
+          <img
+            class="mx-auto mb-5 h-24 w-24 rounded-full border-4 border-violet-400/50 object-cover"
+            src="https://picsum.photos/seed/tailwind-profile/240/240"
+            alt="Foto de perfil"
+          >
+          <h2 class="text-2xl font-bold">Estudiante Demo</h2>
+          <p class="mt-2 text-slate-400">Tarjeta de perfil hecha solo con utilidades.</p>
+          <div class="mt-6 flex justify-center gap-3">
+            <a class="rounded-xl bg-violet-600 px-4 py-2 font-semibold text-white transition hover:bg-violet-500" href="#">GitHub</a>
+            <a class="rounded-xl border border-slate-700 px-4 py-2 font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300" href="#">Contacto</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="grid gap-4 md:grid-cols-3">
+      <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <h2 class="text-xl font-bold text-cyan-300">Color</h2>
+        <p class="mt-3 text-slate-300">Ejemplos: `bg-slate-900`, `text-white`, `border-violet-500`</p>
+      </article>
+      <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <h2 class="text-xl font-bold text-violet-300">Espaciado</h2>
+        <p class="mt-3 text-slate-300">Ejemplos: `p-6`, `px-4`, `py-2`, `mt-6`, `gap-3`</p>
+      </article>
+      <article class="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <h2 class="text-xl font-bold text-emerald-300">Layout</h2>
+        <p class="mt-3 text-slate-300">Ejemplos: `flex`, `grid`, `items-center`, `justify-center`</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

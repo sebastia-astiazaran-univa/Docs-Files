@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog: Instagram en Jóvenes</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+line-height: 1.6;
+color: #333;
+}
+
+header {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: white;
+text-align: center;
+padding: 3rem 1rem;
+margin-bottom: 2rem;
+}
+
+header h1 {
+font-size: 2.5rem;
+margin-bottom: 1rem;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+header p {
+font-size: 1.2rem;
+opacity: 0.95;
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+.blog-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 25px;
+margin-bottom: 40px;
+}
+
+.blog-card {
+background: white;
+border-radius: 15px;
+overflow: hidden;
+box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.card-header {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: white;
+padding: 20px;
+}
+
+.card-header h2 {
+font-size: 1.5rem;
+margin-bottom: 5px;
+}
+
+.card-header .emoji {
+font-size: 2rem;
+margin-bottom: 10px;
+}
+
+.card-content {
+padding: 25px;
+}
+
+.entrevista {
+background: #f8f9fa;
+border-left: 4px solid #667eea;
+margin: 15px 0;
+padding: 15px;
+border-radius: 0 10px 10px 0;
+}
+
+.entrevista p {
+margin: 8px 0;
+}
+
+.entrevista .nombre {
+font-weight: bold;
+color: #667eea;
+font-size: 1.1rem;
+}
+
+.highlight {
+background: linear-gradient(135deg, #fff5f5 0%, #ffe3e3 100%);
+border-left: 4px solid #ff6b6b;
+padding: 20px;
+margin: 20px 0;
+border-radius: 0 10px 10px 0;
+}
+
+.consejo {
+background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+border-left: 4px solid #4facfe;
+padding: 20px;
+margin: 20px 0;
+border-radius: 0 10px 10px 0;
+}
+
+.stats {
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+margin: 30px 0;
+}
+
+.stat-item {
+text-align: center;
+padding: 20px;
+background: white;
+border-radius: 10px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+min-width: 150px;
+margin: 10px;
+}
+
+.stat-number {
+font-size: 2rem;
+font-weight: bold;
+color: #667eea;
+}
+
+.stat-label {
+color: #666;
+font-size: 0.9rem;
+}
+
+footer {
+background: #2d3748;
+color: white;
+text-align: center;
+padding: 2rem;
+margin-top: 3rem;
+}
+
+.tags {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+margin: 15px 0;
+}
+
+.tag {
+background: #e2e8f0;
+padding: 5px 12px;
+border-radius: 20px;
+font-size: 0.8rem;
+color: #4a5568;
+}
+
+@media (max-width: 768px) {
+header h1 {
+font-size: 2rem;
+}
+
+.blog-grid {
+grid-template-columns: 1fr;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<h1>📱 Instagram en Jóvenes</h1>
+<p>Entre la diversión, la distracción y el autoconocimiento digital</p>
+</header>
+
+<div class="container">
+<!-- Estadísticas rápidas -->
+<div class="stats">
+<div class="stat-item">
+<div class="stat-number">4h</div>
+<div class="stat-label">Uso máximo diario</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">80%</div>
+<div class="stat-label">Se distrae con tareas</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">2010</div>
+<div class="stat-label">Año de creación</div>
+</div>
+</div>
+
+<!-- Grid de entradas del blog -->
+<div class="blog-grid">
+<!-- Entrada 1: ¿Qué es Instagram? -->
+<div class="blog-card">
+<div class="card-header">
+<div class="emoji">📸</div>
+<h2>¿Qué es Instagram y por qué engancha tanto?</h2>
+</div>
+<div class="card-content">
+<p>Instagram nació en 2010 como una app sencilla para compartir fotos, pero hoy es mucho más que eso: es una plataforma donde los jóvenes se informan, se entretienen, siguen a sus ídolos y se conectan con amigos.</p>
+<div class="tags">
+<span class="tag">#RedSocial</span>
+<span class="tag">#Historia</span>
+<span class="tag">#Tecnología</span>
+</div>
+<h4 style="margin-top: 15px; color: #667eea;">🎯 ¿Qué ofrece?</h4>
+<ul style="margin-left: 20px; margin-top: 10px;">
+<li>Publicaciones en el perfil</li>
+<li>Historias de 24 horas</li>
+<li>Reels con música y efectos</li>
+<li>Mensajes directos</li>
+<li>Sección "Explorar" personalizada</li>
+</ul>
+</div>
+</div>
+
+<!-- Entrada 2: Entrevistas -->
+<div class="blog-card">
+<div class="card-header">
+<div class="emoji">🎙️</div>
+<h2>Voces juveniles: ¿Qué dicen ellos?</h2>
+</div>
+<div class="card-content">
+<div class="entrevista">
+<p class="nombre">🧑 José Manuel</p>
+<p><strong>⏰ 3 horas/día:</strong> "Lo uso para ver Reels y hablar con amigos. Sí me distrae cuando tengo tarea."</p>
+</div>
+<div class="entrevista">
+<p class="nombre">🧑 Ian Santiago</p>
+<p><strong>⏰ 2 horas/día:</strong> "Veo memes y sigo influencers. Reviso el celular a cada rato."</p>
+</div>
+<div class="entrevista">
+<p class="nombre">👧 María</p>
+<p><strong>⏰ 4 horas/día:</strong> "Subo historias y veo amigos. Dejo de hacer cosas por ver videos."</p>
+</div>
+<div class="entrevista">
+<p class="nombre">🧑 Enrique</p>
+<p><strong>⏰ 1 hora/día:</strong> "Veo deportes. No me afecta tanto."</p>
+</div>
+<div class="entrevista">
+<p class="nombre">🧑 José Luis</p>
+<p><strong>⏰ 2-3 horas/día:</strong> "Me entretengo y hablo con amigos. Sí me distrae."</p>
+</div>
+</div>
+</div>
+
+<!-- Entrada 3: Problemáticas -->
+<div class="blog-card">
+<div class="card-header">
+<div class="emoji">⚠️</div>
+<h2>La otra cara de Instagram</h2>
+</div>
+<div class="card-content">
+<div class="highlight">
+<h4 style="color: #ff6b6b; margin-bottom: 10px;">🎭 La vida "perfecta"</h4>
+<p>Muchos creadores muestran una imagen idealizada que puede generar comparaciones y afectar la autoestima.</p>
+</div>
+<div class="highlight">
+<h4 style="color: #ff6b6b; margin-bottom: 10px;">❤️‍🩹 Necesidad de aprobación</h4>
+<p>Los "likes" se vuelven una validación externa que puede afectar el estado de ánimo.</p>
+</div>
+<div class="highlight">
+<h4 style="color: #ff6b6b; margin-bottom: 10px;">📵 Uso excesivo</h4>
+<p>Pasar horas en la app puede causar distracción, bajo rendimiento escolar y problemas de sueño.</p>
+</div>
+</div>
+</div>
+
+<!-- Entrada 4: Consejos y Soluciones -->
+<div class="blog-card">
+<div class="card-header">
+<div class="emoji">🧠</div>
+<h2>Claves para un uso saludable</h2>
+</div>
+<div class="card-content">
+<div class="consejo">
+<h4 style="color: #4facfe;">⏰ Controla tu tiempo</h4>
+<p>Pon límites diarios. Si usas 3 horas, intenta bajar gradualmente. ¡Tu cerebro lo agradecerá!</p>
+</div>
+<div class="consejo">
+<h4 style="color: #4facfe;">🙅‍♂️ No te compares</h4>
+<p>Detrás de cada foto hay edición y esfuerzo. Inspírate, pero no pierdas tu esencia.</p>
+</div>
+<div class="consejo">
+<h4 style="color: #4facfe;">💬 No busques aprobación externa</h4>
+<p>Publica lo que te gusta, no lo que crees que tendrá más likes.</p>
+</div>
+<div class="consejo">
+<h4 style="color: #4facfe;">🌙 Desconéctate antes de dormir</h4>
+<p>Deja el celular fuera de la habitación. Tu sueño te lo agradecerá.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Reflexión final destacada -->
+<div style="background: white; border-radius: 15px; padding: 30px; margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+<h2 style="color: #667eea; margin-bottom: 20px; text-align: center;">✍️ Reflexión final</h2>
+<p style="font-size: 1.2rem; text-align: center; max-width: 800px; margin: 0 auto;">
+Instagram puede ser una herramienta increíble para conectar, crear y descubrir,
+pero también puede volverse un ladrón de tiempo y autoestima si no lo usamos con cuidado.
+<br><br>
+<strong>La clave está en el equilibrio. Tú decides si lo usas o si te usa a ti.</strong>
+</p>
+</div>
+</div>
+
+<footer>
+<p>© 2024 Blog: Influencia de Instagram en Jóvenes</p>
+<p style="margin-top: 10px; opacity: 0.8;">Basado en entrevistas reales y análisis sobre el impacto de las redes sociales</p>
+</footer>
+</body>
+</html>

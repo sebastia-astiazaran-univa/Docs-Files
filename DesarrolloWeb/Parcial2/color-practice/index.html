@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Teoría del Color 🎨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Space Mono', monospace;
+      background: #f5f0e8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 2.2rem;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 0.75rem;
+      color: #888;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    /* === RUEDA DE COLORES === */
+    .section {
+      background: white;
+      border-radius: 16px;
+      border: 2px solid #e0d8cc;
+      padding: 30px;
+      width: 100%;
+      max-width: 580px;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: #1a1a1a;
+    }
+
+    .section-desc {
+      font-size: 0.7rem;
+      color: #aaa;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* Colores primarios */
+    .color-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .color-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .chip-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .chip-circle:hover { transform: scale(1.1); }
+    .chip-circle.selected { border-color: #1a1a1a; }
+
+    .chip-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #555;
+    }
+
+    /* Mezcla */
+    .mix-area {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .mix-slot {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      border: 2px dashed #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: #bbb;
+      text-align: center;
+      transition: background 0.4s;
+      cursor: pointer;
+    }
+
+    .plus-sign {
+      font-size: 1.6rem;
+      color: #ccc;
+    }
+
+    .equals-sign {
+      font-size: 1.6rem;
+      color: #ccc;
+    }
+
+    .result-box {
+      width: 90px;
+      height: 64px;
+      border-radius: 12px;
+      background: #f0ece4;
+      border: 2px solid #e0d8cc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: background 0.4s;
+    }
+
+    .result-name {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Complementarios */
+    .comp-pair {
+      display: flex;
+      gap: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 60px;
+      margin-bottom: 10px;
+      border: 2px solid #e0d8cc;
+    }
+
+    .comp-half {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    /* Picker interactivo */
+    .picker-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    input[type="color"] {
+      width: 60px;
+      height: 60px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 0;
+      background: none;
+    }
+
+    .harmony-swatches {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .harmony-swatch {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      border: 2px solid #e0d8cc;
+      transition: background 0.3s;
+      position: relative;
+    }
+
+    .harmony-swatch .swatch-label {
+      position: absolute;
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.55rem;
+      color: #aaa;
+      white-space: nowrap;
+    }
+
+    .harmony-swatches { margin-bottom: 20px; }
+
+    /* Badge de info */
+    .badge {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #f5f0e8;
+      font-size: 0.6rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .reset-btn {
+      background: none;
+      border: 2px solid #1a1a1a;
+      border-radius: 8px;
+      padding: 6px 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .reset-btn:hover { background: #1a1a1a; color: white; }
+
+    .hint {
+      font-size: 0.65rem;
+      color: #bbb;
+      margin-top: 10px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Teoría del Color</h1>
+<p class="subtitle">Actividad interactiva básica</p>
+
+<!-- SECCIÓN 1: MEZCLA DE COLORES -->
+<div class="section">
+  <span class="badge">Actividad 1</span>
+  <div class="section-title">Mezcla de colores primarios</div>
+  <p class="section-desc">Haz clic en dos colores primarios y observa qué color secundario se forma al mezclarlos.</p>
+
+  <div class="color-row" id="primaryChips">
+    <!-- se generan con JS -->
+  </div>
+
+  <div class="mix-area">
+    <div class="mix-slot" id="slot1" onclick="clearSlot(1)">elige<br>color</div>
+    <span class="plus-sign">+</span>
+    <div class="mix-slot" id="slot2" onclick="clearSlot(2)">elige<br>color</div>
+    <span class="equals-sign">=</span>
+    <div class="result-box" id="resultBox">
+      <span class="result-name" id="resultName">?</span>
+    </div>
+  </div>
+
+  <button class="reset-btn" onclick="resetMix()">↺ Reiniciar</button>
+  <p class="hint">Tip: Rojo + Azul = ¿Qué obtienes?</p>
+</div>
+
+<!-- SECCIÓN 2: COLORES COMPLEMENTARIOS -->
+<div class="section">
+  <span class="badge">Actividad 2</span>
+  <div class="section-title">Colores complementarios</div>
+  <p class="section-desc">Los colores complementarios están opuestos en la rueda de colores. Juntos crean el mayor contraste visual.</p>
+
+  <div id="compPairs"></div>
+</div>
+
+<!-- SECCIÓN 3: ARMONÍA DE COLOR -->
+<div class="section">
+  <span class="badge">Actividad 3</span>
+  <div class="section-title">Explorador de armonía</div>
+  <p class="section-desc">Elige cualquier color y descubre su tríada armónica (3 colores equidistantes en la rueda).</p>
+
+  <div class="picker-row">
+    <input type="color" id="colorPicker" value="#e63946" oninput="updateHarmony()">
+    <div class="harmony-swatches" id="harmonySwatches"></div>
+  </div>
+</div>
+
+<script>
+  // === DATOS ===
+  const primaries = [
+    { name: "Rojo",     hex: "#E63946" },
+    { name: "Azul",     hex: "#1D3A8A" },
+    { name: "Amarillo", hex: "#F4C430" },
+  ];
+
+  const mixResults = {
+    "Rojo+Azul":      { name: "Violeta",   hex: "#7B2D8B" },
+    "Azul+Rojo":      { name: "Violeta",   hex: "#7B2D8B" },
+    "Rojo+Amarillo":  { name: "Naranja",   hex: "#F4742B" },
+    "Amarillo+Rojo":  { name: "Naranja",   hex: "#F4742B" },
+    "Azul+Amarillo":  { name: "Verde",     hex: "#3A9D23" },
+    "Amarillo+Azul":  { name: "Verde",     hex: "#3A9D23" },
+  };
+
+  const complementaryPairs = [
+    { a: { name: "Rojo",      hex: "#E63946", text: "#fff" },
+      b: { name: "Verde",     hex: "#3A9D23", text: "#fff" } },
+    { a: { name: "Azul",      hex: "#1D3A8A", text: "#fff" },
+      b: { name: "Naranja",   hex: "#F4742B", text: "#fff" } },
+    { a: { name: "Amarillo",  hex: "#F4C430", text: "#333" },
+      b: { name: "Violeta",   hex: "#7B2D8B", text: "#fff" } },
+  ];
+
+  // === ACTIVIDAD 1 ===
+  let selected = [null, null];
+
+  const chipsContainer = document.getElementById("primaryChips");
+  primaries.forEach(color => {
+    const chip = document.createElement("div");
+    chip.className = "color-chip";
+    chip.innerHTML = `
+      <div class="chip-circle" style="background:${color.hex}" id="chip-${color.name}"></div>
+      <span class="chip-label">${color.name}</span>
+    `;
+    chip.addEventListener("click", () => selectColor(color));
+    chipsContainer.appendChild(chip);
+  });
+
+  function selectColor(color) {
+    if (selected[0] === null) {
+      selected[0] = color;
+      document.getElementById("slot1").style.background = color.hex;
+      document.getElementById("slot1").style.borderColor = color.hex;
+      document.getElementById("slot1").textContent = color.name;
+      document.getElementById("slot1").style.color = "white";
+      document.getElementById(`chip-${color.name}`).classList.add("selected");
+    } else if (selected[1] === null && color.name !== selected[0].name) {
+      selected[1] = color;
+      document.getElementById("slot2").style.background = color.hex;
+      document.getElementById("slot2").style.borderColor = color.hex;
+      document.getElementById("slot2").textContent = color.name;
+      document.getElementById("slot2").style.color = "white";
+      document.getElementById(`chip-${color.name}`).classList.add("selected");
+      showResult();
+    }
+  }
+
+  function showResult() {
+    const key = `${selected[0].name}+${selected[1].name}`;
+    const mix = mixResults[key];
+    if (mix) {
+      const box = document.getElementById("resultBox");
+      box.style.background = mix.hex;
+      box.style.borderColor = mix.hex;
+      document.getElementById("resultName").textContent = mix.name;
+      document.getElementById("resultName").style.color = "white";
+    }
+  }
+
+  function clearSlot(n) {
+    const idx = n - 1;
+    if (selected[idx]) {
+      document.getElementById(`chip-${selected[idx].name}`).classList.remove("selected");
+      selected[idx] = null;
+      const slot = document.getElementById(`slot${n}`);
+      slot.style.background = "";
+      slot.style.borderColor = "#ccc";
+      slot.textContent = "elige\ncolor";
+      slot.style.color = "#bbb";
+      document.getElementById("resultBox").style.background = "#f0ece4";
+      document.getElementById("resultBox").style.borderColor = "#e0d8cc";
+      document.getElementById("resultName").textContent = "?";
+      document.getElementById("resultName").style.color = "#333";
+    }
+  }
+
+  function resetMix() {
+    clearSlot(1); clearSlot(2);
+  }
+
+  // === ACTIVIDAD 2 ===
+  const pairsContainer = document.getElementById("compPairs");
+  complementaryPairs.forEach(pair => {
+    const div = document.createElement("div");
+    div.className = "comp-pair";
+    div.innerHTML = `
+      <div class="comp-half" style="background:${pair.a.hex}; color:${pair.a.text}">${pair.a.name}</div>
+      <div class="comp-half" style="background:${pair.b.hex}; color:${pair.b.text}">${pair.b.name}</div>
+    `;
+    pairsContainer.appendChild(div);
+  });
+
+  // === ACTIVIDAD 3 ===
+  function hexToHsl(hex) {
+    let r = parseInt(hex.slice(1,3),16)/255;
+    let g = parseInt(hex.slice(3,5),16)/255;
+    let b = parseInt(hex.slice(5,7),16)/255;
+    const max = Math.max(r,g,b), min = Math.min(r,g,b);
+    let h, s, l = (max+min)/2;
+    if (max === min) { h = s = 0; }
+    else {
+      const d = max - min;
+      s = l > 0.5 ? d/(2-max-min) : d/(max+min);
+      switch(max) {
+        case r: h = ((g-b)/d + (g<b?6:0))/6; break;
+        case g: h = ((b-r)/d + 2)/6; break;
+        case b: h = ((r-g)/d + 4)/6; break;
+      }
+    }
+    return [Math.round(h*360), Math.round(s*100), Math.round(l*100)];
+  }
+
+  function hslToHex(h,s,l) {
+    s /= 100; l /= 100;
+    const k = n => (n + h/30) % 12;
+    const a = s * Math.min(l, 1-l);
+    const f = n => l - a*Math.max(-1, Math.min(k(n)-3, Math.min(9-k(n),1)));
+    const toHex = x => Math.round(x*255).toString(16).padStart(2,'0');
+    return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
+  }
+
+  function updateHarmony() {
+    const hex = document.getElementById("colorPicker").value;
+    const [h, s, l] = hexToHsl(hex);
+    const colors = [
+      { label: "Base",    hex, hsl: `hsl(${h})` },
+      { label: "+120°",   hex: hslToHex((h+120)%360, s, l) },
+      { label: "+240°",   hex: hslToHex((h+240)%360, s, l) },
+    ];
+
+    const container = document.getElementById("harmonySwatches");
+    container.innerHTML = "";
+    colors.forEach(c => {
+      const wrap = document.createElement("div");
+      wrap.style.display = "flex";
+      wrap.style.flexDirection = "column";
+      wrap.style.alignItems = "center";
+      wrap.style.gap = "20px";
+      wrap.innerHTML = `
+        <div style="position:relative">
+          <div class="harmony-swatch" style="background:${c.hex}">
+            <span class="swatch-label">${c.label}</span>
+          </div>
+        </div>
+      `;
+      container.appendChild(wrap);
+    });
+  }
+
+  updateHarmony();
+</script>
+</body>
+</html>

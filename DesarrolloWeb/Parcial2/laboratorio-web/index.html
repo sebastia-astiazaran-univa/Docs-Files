@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratorio Web - Parcial 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero-shell" id="inicio">
+    <nav class="topbar">
+      <a class="brand" href="#inicio">Laboratorio P2</a>
+      <div class="nav-links">
+        <a href="#plan">Plan</a>
+        <a href="#color">Color</a>
+        <a href="#tipografia">Tipografia</a>
+        <a href="#componentes">Componentes</a>
+        <a href="#iconos">Iconos</a>
+        <a href="#carrusel">Carrusel</a>
+        <a href="#javascript">JavaScript</a>
+        <a href="#entregas">Entregas</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Apoyo visual para clase</p>
+        <h1>Diseno web real, no solo teoria.</h1>
+        <p>
+          Este laboratorio acompana el segundo parcial con demos visuales de color, tipografia,
+          componentes, iconos, carrusel y mini practicas de JavaScript para explicar en vivo lo que
+          si mejora una interfaz.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#plan">Ver plan de 4 semanas</a>
+          <a class="button ghost" href="#javascript">Ir al mini modulo JS</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <h2>Ruta del parcial</h2>
+        <ul class="topic-list">
+          <li>Semana 1: color, tipografia, espaciado y receta</li>
+          <li>Semana 2: componentes, CTA, iconos y pricing card</li>
+          <li>Semana 3: DOM, eventos, acordeon y extras de UI</li>
+          <li>Semana 4: juego final con CSS y JS</li>
+        </ul>
+      </aside>
+    </section>
+  </header>
+
+  <main class="page">
+    <section class="lesson" id="plan">
+      <div class="lesson-head">
+        <p class="lesson-tag">16 clases</p>
+        <h2>Plan semanal del parcial</h2>
+        <p>Cuatro semanas, cuatro clases por semana y una tarea semanal que aterriza lo visto en clase.</p>
+      </div>
+
+      <div class="week-grid">
+        <article class="week-card">
+          <span class="week-chip">Semana 1</span>
+          <h3>Diseno visual base</h3>
+          <p>Jerarquia visual, color, tipografia, espacio en blanco y responsive inicial.</p>
+          <strong>Tarea: `recipe-page-main/`</strong>
+        </article>
+        <article class="week-card">
+          <span class="week-chip">Semana 2</span>
+          <h3>Componentes y layout</h3>
+          <p>Cards, botones, iconos, Flexbox, Grid y estados visuales.</p>
+          <strong>Tarea: `single-price-grid-component-master/`</strong>
+        </article>
+        <article class="week-card">
+          <span class="week-chip">Semana 3</span>
+          <h3>Mini modulo JavaScript</h3>
+          <p>Variables, DOM, eventos, acordeon, tabs, contador y carrusel simple.</p>
+          <strong>Tarea: `faq-accordion-main/`</strong>
+        </article>
+        <article class="week-card">
+          <span class="week-chip">Semana 4</span>
+          <h3>Integracion final</h3>
+          <p>Juego libre con puntaje, reinicio, estado final y diseno responsivo.</p>
+          <strong>Entrega: proyecto final</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="lesson" id="color">
+      <div class="lesson-head">
+        <p class="lesson-tag">Semana 1</p>
+        <h2>Color que si sirve en web</h2>
+        <p>Trabaja con una paleta limitada y observa como cambia la personalidad de la interfaz.</p>
+      </div>
+
+      <div class="grid-two">
+        <article class="card">
+          <h3>Paletas sugeridas</h3>
+          <div class="controls">
+            <button class="pill is-active" data-palette="editorial">Editorial</button>
+            <button class="pill" data-palette="fresh">Fresh</button>
+            <button class="pill" data-palette="night">Night</button>
+          </div>
+          <ul class="idea-list">
+            <li>Usa un color principal para identidad.</li>
+            <li>Usa el acento solo para botones o foco visual.</li>
+            <li>El texto necesita contraste alto.</li>
+            <li>No todo debe competir por llamar la atencion.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Vista previa de color</h3>
+          <div class="palette-demo palette-editorial" id="palette-demo">
+            <span class="mini-badge">Featured article</span>
+            <h4>Color principal, fondo y acento en equilibrio</h4>
+            <p>
+              Una interfaz se vuelve mas clara cuando el color deja de ser decoracion y empieza
+              a comunicar jerarquia, accion y lectura.
+            </p>
+            <div class="swatch-row">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="lesson" id="tipografia">
+      <div class="lesson-head">
+        <p class="lesson-tag">Semana 1</p>
+        <h2>Tipografia y espacio en blanco</h2>
+        <p>Diseno limpio significa mejor lectura, mejor ritmo visual y menos ruido.</p>
+      </div>
+
+      <div class="grid-two">
+        <article class="card">
+          <h3>Control de espaciado</h3>
+          <div class="slider-group">
+            <label for="space-control">Espaciado general <span id="space-value">24px</span></label>
+            <input id="space-control" type="range" min="12" max="48" value="24">
+          </div>
+          <div class="slider-group">
+            <label for="line-control">Line height <span id="line-value">1.7</span></label>
+            <input id="line-control" type="range" min="12" max="24" value="17">
+          </div>
+          <p class="note">Mas espacio suele mejorar la lectura mucho mas que agregar adornos.</p>
+        </article>
+
+        <article class="card">
+          <h3>Articulo de ejemplo</h3>
+          <div class="type-demo" id="type-demo">
+            <p class="eyebrow type-eyebrow">Weekend recipe</p>
+            <h4>Simple Omelette Recipe</h4>
+            <p class="type-body">
+              Observa la diferencia entre un titulo con personalidad, un parrafo legible y un
+              espaciado que deja respirar el contenido.
+            </p>
+            <a href="#componentes">Leer mas</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="lesson" id="componentes">
+      <div class="lesson-head">
+        <p class="lesson-tag">Semana 2</p>
+        <h2>Componentes que aparecen en sitios reales</h2>
+        <p>Cards, heroes, badges, botones, listas de beneficios y bloques de precio.</p>
+      </div>
+
+      <div class="component-grid">
+        <article class="ui-card hero-card">
+          <span class="mini-badge">Hero</span>
+          <h3>Encabezado con CTA</h3>
+          <p>Debe tener foco visual, mensaje claro y un boton principal que destaque.</p>
+          <a class="button primary" href="#entregas">Call to action</a>
+        </article>
+
+        <article class="ui-card">
+          <span class="mini-badge">Pricing</span>
+          <h3>Join our community</h3>
+          <p class="price-line"><strong>$29</strong> por mes</p>
+          <ul class="idea-list compact">
+            <li>Full access</li>
+            <li>Code review</li>
+            <li>Weekly updates</li>
+          </ul>
+          <a class="button lime" href="#iconos">Sign up</a>
+        </article>
+
+        <article class="ui-card">
+          <span class="mini-badge">Badge</span>
+          <h3>Pequenos detalles visuales</h3>
+          <div class="badge-row">
+            <span class="badge soft">Nuevo</span>
+            <span class="badge dark">UI</span>
+            <span class="badge outline">CSS</span>
+          </div>
+          <p>Los detalles deben sumar claridad, no ruido.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="lesson" id="iconos">
+      <div class="lesson-head">
+        <p class="lesson-tag">Semana 2</p>
+        <h2>Iconos y apoyo visual</h2>
+        <p>Los iconos ayudan cuando refuerzan significado, guian la lectura o mejoran la exploracion.</p>
+      </div>
+
+      <div class="grid-two">
+        <article class="card">
+          <h3>Escenarios comunes</h3>
+          <div class="controls">
+            <button class="pill is-active" data-icon-mode="benefits">Beneficios</button>
+            <button class="pill" data-icon-mode="faq">FAQ</button>
+            <button class="pill" data-icon-mode="stats">Stats</button>
+          </div>
+          <ul class="idea-list">
+            <li>Mismo estilo visual en todos los iconos.</li>
+            <li>Usarlos donde ayuden a escanear rapido.</li>
+            <li>No sustituir texto importante solo con iconos.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Preview con iconos</h3>
+          <div class="icon-demo" id="icon-demo">
+            <article>
+              <span class="icon-bubble">✓</span>
+              <div>
+                <strong>Code review</strong>
+                <p>Feedback de calidad con ritmo semanal.</p>
+              </div>
+            </article>
+            <article>
+              <span class="icon-bubble">★</span>
+              <div>
+                <strong>Contenido premium</strong>
+                <p>Recursos que elevan el valor visual del proyecto.</p>
+              </div>
+            </article>
+            <article>
+              <span class="icon-bubble">→</span>
+              <div>
+                <strong>Navegacion clara</strong>
+                <p>Guiar al usuario tambien es parte del diseno.</p>
+              </div>
+            </article>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="lesson" id="carrusel">
+      <div class="lesson-head">
+        <p class="lesson-tag">Semana 3 extra</p>
+        <h2>Carrusel simple</h2>
+        <p>Se explica como componente extra: util cuando resume contenido, no cuando es puro adorno.</p>
+      </div>
+
+      <article class="card">
+        <div class="carousel-head">
+          <div>
+            <h3>Demo de cards deslizables</h3>
+            <p class="note">Ideal para testimonios, productos o proyectos destacados.</p>
+          </div>
+          <div class="controls">
+            <button class="pill" id="prev-slide">Anterior</button>
+            <button class="pill" id="next-slide">Siguiente</button>
+          </div>
+        </div>
+
+        <div class="carousel-shell">
+          <div class="carousel-track" id="carousel-track">
+            <article class="carousel-card">
+              <span class="mini-badge">Slide 1</span>
+              <h4>Uso correcto</h4>
+              <p>Muestra pocos elementos y deja claro como avanzar.</p>
+            </article>
+            <article class="carousel-card">
+              <span class="mini-badge">Slide 2</span>
+              <h4>Diseno consistente</h4>
+              <p>El estilo debe ser igual en cada tarjeta para no romper el flujo.</p>
+            </article>
+            <article class="carousel-card">
+              <span class="mini-badge">Slide 3</span>
+              <h4>Buen soporte movil</h4>
+              <p>Botones visibles, contenido corto y navegacion intuitiva.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="dot-row" id="dot-row">
+          <button class="dot is-active" data-slide="0" aria-label="Ir al slide 1"></button>
+          <button class="dot" data-slide="1" aria-label="Ir al slide 2"></button>
+          <button class="dot" data-slide="2" aria-label="Ir al slide 3"></button>
+        </div>
+      </article>
+    </section>
+
+    <section class="lesson" id="javascript">
+      <div class="lesson-head">
+        <p class="lesson-tag">Semana 3</p>
+        <h2>Mini modulo de JavaScript</h2>
+        <p>Introduccion practica al DOM y a la interaccion visual: contador, tabs y acordeon.</p>
+      </div>
+
+      <div class="js-grid">
+        <article class="card">
+          <h3>Clase 9 y 10</h3>
+          <ul class="idea-list compact">
+            <li>Variables y funciones</li>
+            <li>querySelector y querySelectorAll</li>
+            <li>Eventos con addEventListener</li>
+            <li>Actualizar texto y clases</li>
+          </ul>
+
+          <div class="counter-demo">
+            <button class="pill" id="decrease-count">-</button>
+            <strong id="count-value">0</strong>
+            <button class="pill" id="increase-count">+</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Tabs basicos</h3>
+          <div class="controls">
+            <button class="pill is-active" data-tab="dom">DOM</button>
+            <button class="pill" data-tab="eventos">Eventos</button>
+            <button class="pill" data-tab="clases">Clases</button>
+          </div>
+          <div class="tab-panel" id="tab-panel">
+            <strong>DOM</strong>
+            <p>JavaScript localiza elementos para leerlos, cambiarlos o responder a acciones.</p>
+          </div>
+        </article>
+      </div>
+
+      <article class="card">
+        <h3>Mini acordeon</h3>
+        <div class="accordion-demo">
+          <article class="accordion-item is-open">
+            <button class="accordion-button" aria-expanded="true">Que hace JavaScript en una interfaz?</button>
+            <div class="accordion-content">
+              <p>Agrega comportamiento: clics, cambios de estado, contadores, sliders y juegos.</p>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-button" aria-expanded="false">Que necesito para empezar?</button>
+            <div class="accordion-content">
+              <p>Variables, funciones, DOM, eventos y entender que el diseno tambien comunica estado.</p>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-button" aria-expanded="false">Por que verlo en este parcial?</button>
+            <div class="accordion-content">
+              <p>Porque el diseno web actual no solo se maqueta: tambien reacciona y da feedback al usuario.</p>
+            </div>
+          </article>
+        </div>
+      </article>
+    </section>
+
+    <section class="lesson" id="entregas">
+      <div class="lesson-head">
+        <p class="lesson-tag">Resumen final</p>
+        <h2>Entregas por semana</h2>
+        <p>El parcial queda organizado para que cada semana tenga practica, evidencia y continuidad visual.</p>
+      </div>
+
+      <div class="deliver-grid">
+        <article class="deliver-card">
+          <h3>Semana 1</h3>
+          <p>`recipe-page-main/`</p>
+          <span>Color, tipografia, espaciado, responsive</span>
+        </article>
+        <article class="deliver-card">
+          <h3>Semana 2</h3>
+          <p>`single-price-grid-component-master/`</p>
+          <span>Cards, CTA, iconos, Flexbox y Grid</span>
+        </article>
+        <article class="deliver-card">
+          <h3>Semana 3</h3>
+          <p>`faq-accordion-main/`</p>
+          <span>DOM, eventos, acordeon, estados visuales</span>
+        </article>
+        <article class="deliver-card">
+          <h3>Semana 4</h3>
+          <p>Juego final</p>
+          <span>Integracion de CSS y JavaScript</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>Laboratorio visual para explicar en vivo el segundo parcial de Diseno Web.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
