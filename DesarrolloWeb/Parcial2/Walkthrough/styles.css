@@ -1,0 +1,72 @@
+/* =============================================================================
+   RESETEO Y BASE
+   Hace que padding y border no “rompan” el ancho; define tipografía global.
+   ============================================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Grande', Geneva, Verdana, sans-serif;
+}
+
+/* =============================================================================
+   CUADRÍCULA DE POKÉMON
+   CSS Grid: columnas que se reparten solas (responsive) con mínimo 220px.
+   ============================================================================= */
+#pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+/* =============================================================================
+   SCROLL INFINITO
+   El sentinel casi no se ve; solo sirve para que IntersectionObserver dispare.
+   ============================================================================= */
+#sentinel { height: 4px; }
+
+/* =============================================================================
+   BÚSQUEDA
+   La clase la agrega JS cuando el nombre no coincide con el filtro.
+   ============================================================================= */
+.pokemon-card--hidden { display: none !important; }
+
+/* =============================================================================
+   TARJETA INDIVIDUAL
+   Cada <article class="pokemon-card"> que crea cardEl() en app.js.
+   ============================================================================= */
+.pokemon-card {
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    padding: 2rem;
+}
+
+/* =============================================================================
+   MODAL — OVERLAY
+   Cubre toda la pantalla con semitransparencia; z-index por debajo del modal.
+   ============================================================================= */
+#modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+/* =============================================================================
+   MODAL — CAJA
+   Centrada con position fixed + transform; scroll interno si el contenido crece.
+   ============================================================================= */
+#modal {
+    position: fixed;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    background: #fff;
+    color: #e40808;
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 90vw;
+    max-height: 85vh;
+    overflow: auto;
+}

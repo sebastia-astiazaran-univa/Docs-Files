@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- Documento HTML5; lang="es" ayuda a lectores de pantalla y buscadores -->
+<html lang="es">
+    <head>
+        <!-- Codificación UTF-8 para tildes y caracteres especiales -->
+        <meta charset="UTF-8">
+        <!-- Escala correcta en móviles -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pokédex</title>
+        <!-- Hoja de estilos externa: todo el diseño vive en styles.css -->
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Cabecera: búsqueda en vivo y (opcional) control de tema -->
+        <header class="site-header">
+            <!-- id fijo: app.js lo enlaza con $("search-input") -->
+            <input type="search" id="search-input" placeholder="Buscar…"/>
+            <!-- Botón reservado para alternar tema claro/oscuro (lógica en JS si la agregás) -->
+            <button type="button" id="theme-toggle" aria-label="Cambiar tema">Buscar Pokemon</button>
+        </header>
+
+        <!-- Mensajes de error de red/API; hidden hasta que JS muestre texto -->
+        <div id="error-banner" role="alert" hidden></div>
+
+        <!-- Contenido principal de la aplicación -->
+        <main id="main">
+            <!-- Aquí app.js inserta las tarjetas de Pokémon (grid vacío al inicio) -->
+            <div id="pokemon-grid" role="list" aria-label="Lista de Pokémon"></div>
+            <!-- Elemento “sentinel”: al entrar en vista, el JS pide el siguiente lote (scroll infinito) -->
+            <div id="sentinel" aria-hidden="true"></div>
+        </main>
+
+        <!-- Capa oscura detrás del modal; clic cierra el detalle -->
+        <div id="modal-overlay" hidden></div>
+        <!-- Ventana de detalle: role dialog + aria-modal para accesibilidad -->
+        <div id="modal" role="dialog" aria-modal="true" hidden tabindex="-1">
+            <button type="button" id="modal-close" aria-label="Cerrar">×</button>
+            <!-- Contenido del Pokémon inyectado por openModal() -->
+            <div id="modal-content"></div>
+        </div>
+
+        <!-- defer: ejecuta app.js cuando el DOM ya está parseado -->
+        <script src="app.js" defer></script>
+    </body>
+</html>

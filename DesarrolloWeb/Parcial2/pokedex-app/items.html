@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Búsqueda de ítems Pokémon por nombre o ID." />
+    <title>Pokédex Nacional | Ítems</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="items">
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header">
+      <div class="header-inner glass-panel">
+        <div class="brand">
+          <span class="brand-icon" aria-hidden="true">⚡</span>
+          <h1 class="brand-title">Pokédex Nacional</h1>
+        </div>
+        <nav class="section-nav" aria-label="Secciones de la Pokédex">
+          <a class="section-link" href="index.html">Inicio</a>
+          <a class="section-link" href="movimientos.html">Movimientos</a>
+          <a class="section-link active" href="items.html" aria-current="page">Ítems</a>
+          <a class="section-link" href="equipo.html">Mi equipo</a>
+        </nav>
+        <div class="header-controls">
+          <button
+            type="button"
+            id="theme-toggle"
+            class="btn-theme"
+            aria-label="Alternar modo claro u oscuro"
+            title="Tema"
+          >
+            <span class="theme-icon theme-icon--sun" aria-hidden="true">☀</span>
+            <span class="theme-icon theme-icon--moon" aria-hidden="true">☾</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <p class="intro">
+        Consulta ítems por nombre o ID. Datos obtenidos desde
+        <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer">PokeAPI</a>.
+      </p>
+
+      <section class="resource-section glass-panel" aria-labelledby="items-title">
+        <div class="resource-header">
+          <h2 id="items-title">Ítems</h2>
+          <p class="resource-subtitle">Búsqueda específica por nombre o ID.</p>
+        </div>
+        <label class="resource-search-field" for="items-search-input">
+          <span class="visually-hidden">Buscar ítems por nombre o ID</span>
+          <input
+            type="search"
+            id="items-search-input"
+            class="resource-search-input"
+            placeholder="Buscar ítem por nombre o ID…"
+            autocomplete="off"
+            spellcheck="false"
+            aria-controls="items-results"
+          />
+        </label>
+        <p id="items-status" class="resource-status" role="status">Cargando ítems…</p>
+        <ul id="items-results" class="resource-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
